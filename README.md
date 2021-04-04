@@ -1,7 +1,7 @@
 # GT Class Sign up Bot
  A bot that checks and signs up for classes
 
-NOTE: Duo push needs to be done on start of the program, no way around it unless you buy a physical key
+NOTE: Duo push needs to be done on start of the program, no way around it unless you buy a physical key </br>
 NOTE 2: SELENIUM CHROMEDRIVER IS REQUIRED AS A DEPENDENCY
 
 INSTRUCTIONS: Create classesWanted.txt and classesToDrop.txt in the project folder
