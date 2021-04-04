@@ -1,5 +1,4 @@
-<Username>
-<Password>
-<Class wanted #1 (in format <subject> <number> <CRN> for example: MATH 1101 67421>
-<Class wanted #2>
-<Class wanted #3>
+mzheng61
+Fisheggs33!
+PSYC 2210 80419
+MATH 3012 81185
