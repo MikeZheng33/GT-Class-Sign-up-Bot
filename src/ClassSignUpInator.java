@@ -63,16 +63,9 @@ public class ClassSignUpInator {
                                     break;
                                 }
                             }
-                            System.out.println("test");
-                            System.out.println(index);
-                            driver.findElementByXPath("/html/body/div[3]/form/input[" + (index - 3) + "]").click();
-                            System.out.println("classes.size() = " + classes.size());
-                            String[] classInfo = classes.get(i).split(" ");
-                            System.out.println("classInfo = " + classInfo.length);
-                            System.out.println(Arrays.toString(classInfo));
-                            String CRN = classes.get(i).split(" ")[2];
 
-                            System.out.println("tester print");
+                            driver.findElementByXPath("/html/body/div[3]/form/input[" + (index - 3) + "]").click();
+                            String CRN = classes.get(i).split(" ")[2];
 
                             List<WebElement> rows = driver.findElementsByCssSelector("body > div.pagebodydiv > form > table.datadisplaytable > tbody > tr");
                             System.out.println("rows.size() = " + rows.size());
@@ -86,11 +79,11 @@ public class ClassSignUpInator {
                                 }
                             }
 
-                            System.out.println("CLASS REGISTEREDDDD" + classes.get(i));
+                            System.out.println("CLASS REGISTERED : " + classes.get(i));
                             driver.findElementByXPath("/html/body/div[3]/form/input[19]").click();
                             classes.remove(i);  //removes the class from the list of classes
                         } else {
-                            System.out.println("TAKEN" + classes.get(i));
+                            System.out.println("Class is Full : " + classes.get(i));
                         }
 
                         //navigates back to advanced search
@@ -101,8 +94,7 @@ public class ClassSignUpInator {
                         driverWait.until(ExpectedConditions.elementToBeClickable(By.xpath("/html/body/div[3]/form/input[83]"))).click();
                 }
             } catch (Exception e) {  //if there are any errors, close all tabs and restart
-                System.out.println(e.getMessage());
-                System.out.println(e.toString());
+                e.printStackTrace();
                 Set<String> handles = driver.getWindowHandles();
                 String currentHandle = driver.getWindowHandle();
                 driver.close();
@@ -155,8 +147,6 @@ public class ClassSignUpInator {
 
         //classInfoSplit will be in the format (subject, class number, CRN)
         String[] classInfoSplit = classInfo.split(" ");
-        System.out.println("classInfoSplit = " + classInfoSplit[0]);
-        System.out.println("classInfoSplit1 = " + subjectList.indexOf(classInfoSplit[0]));
         //selects the subject after converting to xpath
         driverWait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id=\"subj_id\"]/option[" +
                 (subjectList.indexOf(classInfoSplit[0]) + 1) + "]"))).click();
@@ -188,8 +178,7 @@ public class ClassSignUpInator {
                 rowNum++;
                 driver.findElementById("action_id" + i);
                 action_ids.add(i);
-            } catch (Exception e) {
-                e.printStackTrace();
+            } catch (Exception ignored) {
             }
         }
 
