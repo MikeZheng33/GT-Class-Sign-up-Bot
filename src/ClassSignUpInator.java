@@ -97,6 +97,7 @@ public class ClassSignUpInator {
                 e.printStackTrace();
                 Set<String> handles = driver.getWindowHandles();
                 String currentHandle = driver.getWindowHandle();
+
                 driver.close();
                 for (String handle : handles) {
                     if (!handle .equals(currentHandle)) {
@@ -104,8 +105,7 @@ public class ClassSignUpInator {
                     }
                 }
 
-                driver.close();
-                driver = new ChromeDriver();
+                driver.get("https://www.google.com/");
                 start(driver, username, password);
             }
         }
@@ -115,10 +115,15 @@ public class ClassSignUpInator {
     protected static void start(ChromeDriver driver, String username, String password)  {
         driver.get("https://buzzport.gatech.edu/my");
 
-        //login
-        driver.findElement(By.id("username")).sendKeys(username);
-        driver.findElement(By.name("password")).sendKeys(password);
-        driver.findElement(By.name("submit")).click();
+        try {
+            //login
+            driver.findElement(By.id("username")).sendKeys(username);
+            driver.findElement(By.name("password")).sendKeys(password);
+            driver.findElement(By.name("submit")).click();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
 
         //go to registration
         WebDriverWait driverWait = new WebDriverWait(driver, 25);
